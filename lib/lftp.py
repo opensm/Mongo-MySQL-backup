@@ -27,6 +27,7 @@ class FTPBackupForDB:
         :param path:
         :return:
         """
+        self.ftp.set_debuglevel(0)
         self.ftp.cwd(dirname=path)
         return self.ftp.nlst()
 
