@@ -1,4 +1,5 @@
 from lib.lftp import FTPBackupForDB
 
-f = FTPBackupForDB(db='mongo')
-f.ls_dir(path='dev')
+if __name__ == 'main':
+    f = FTPBackupForDB(db='mongo')
+    f.ls_dir(path='dev')
