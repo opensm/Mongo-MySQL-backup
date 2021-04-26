@@ -28,8 +28,18 @@ class FTPBackupForDB:
         :return:
         """
         self.ftp.cwd(dirname=path)
-        data = self.ftp.nlst().remove('.').remove('..')
-        return data
+        return self.ftp.nlst()
+
+    def show_list(self, path):
+        """
+        :param path:
+        :return:
+        """
+        data = list
+        for x in self.ls_dir(path=path):
+            if x == '.' or x == '..':
+                continue
+            data.append("{0} ({1})".format(os.path.join(path, x), x))
 
     def download(self, remote_path, local_path, achieve):
         """
