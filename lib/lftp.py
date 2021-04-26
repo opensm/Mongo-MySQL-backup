@@ -35,11 +35,11 @@ class FTPBackupForDB:
         :param path:
         :return:
         """
-        data = list
+        data = list()
         for x in self.ls_dir(path=path):
             if x == '.' or x == '..':
                 continue
-            data.append("{0} ({1})".format(os.path.join(path, x), x))
+            data.extend("{0} ({1})".format(os.path.join(path, x), x))
 
     def download(self, remote_path, local_path, achieve):
         """
