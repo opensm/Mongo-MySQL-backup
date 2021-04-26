@@ -82,3 +82,10 @@ class FTPBackupForDB:
         except Exception as error:
             RecodeLog.error(msg="删除远端文件失败，{}，原因：{}".format(remote_achieve, error))
             return False
+
+    def __del__(self):
+        try:
+            self.ftp.dir()
+            self.ftp.close()
+        except:
+            sys.exit(0)
