@@ -29,7 +29,7 @@ class FTPBackupForDB:
         """
         self.ftp.set_debuglevel(0)
         self.ftp.cwd(dirname=path)
-        return self.ftp.nlst()
+        return self.ftp.retrlines(cmd='LIST')
 
     def show_list(self, path):
         """
