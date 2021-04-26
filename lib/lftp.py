@@ -40,7 +40,8 @@ class FTPBackupForDB:
             print(x)
             if x == '.' or x == '..':
                 continue
-            data.extend("{0} ({1})".format(os.path.join(path, x), x))
+            each = "%s ({%s})" % (os.path.join(path, x), x)
+            data.extend(each)
         return data
 
     def download(self, remote_path, local_path, achieve):
