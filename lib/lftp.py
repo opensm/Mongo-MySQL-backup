@@ -60,6 +60,7 @@ class FTPBackupForDB:
         :param achieve:
         :return:
         """
+        self.connect()
         if not self.download(local_path=BACKUP_DIR, remote_path=remote, achieve=achieve):
             sys.exit(1)
         else:
