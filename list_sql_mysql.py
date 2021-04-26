@@ -1,4 +1,5 @@
-from lib.mongodbexec import FTPBackupForDB
+from lib.lftp import FTPBackupForDB
 
-f = FTPBackupForDB(db='mysql')
-f.ls_dir(path='dev')
+if __name__ == '__main__':
+    f = FTPBackupForDB(db='mysql')
+    print(f.ls_dir(path='dev'))
