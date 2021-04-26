@@ -37,7 +37,6 @@ class FTPBackupForDB:
         """
         data = list()
         for x in self.ls_dir(path=path):
-            print(x)
             if x == '.' or x == '..':
                 continue
             data.append(x)
