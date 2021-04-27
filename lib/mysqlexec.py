@@ -10,8 +10,6 @@ from lib.NextCloudManager import NextCloudManager
 import copy
 import platform
 
-assert "centos" in platform.platform()
-
 
 class MySQLExec:
     def __init__(self, env="pre"):
