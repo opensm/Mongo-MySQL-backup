@@ -20,6 +20,9 @@ class NextCloudManager:
                 password=token,
                 json_output=True
             )
+            RecodeLog.info(msg="初始化nextcloud Success，地址:{},用户:{},TOKEN:{}".format(
+                NEXTCLOUD_URL, NEXTCLOUD_USERNAME, token
+            ))
         except Exception as error:
             RecodeLog.error(msg="初始化nextcloud失败，地址:{},用户:{},原因:{}".format(
                 NEXTCLOUD_URL, NEXTCLOUD_USERNAME, error
@@ -36,13 +39,13 @@ class NextCloudManager:
         try:
             data = self.nxc.upload_file(NEXTCLOUD_USERNAME, local_achieve, remote_achieve)
             RecodeLog.info(msg="上传到nextcloud成功！本地文件:{},远程文件:{},地址:{},用户:{}！".format(
-                local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_USERNAME
+                local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_ID
             ))
             if not data.is_ok:
                 raise Exception(data.data)
         except Exception as error:
             RecodeLog.error(msg="上传到nextcloud失败，本地文件:{},远程文件:{},地址:{},用户:{},原因:{}".format(
-                local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_USERNAME, error
+                local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_ID, error
             ))
             sys.exit(1)
 
