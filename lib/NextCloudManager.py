@@ -13,12 +13,11 @@ class NextCloudManager:
 
     def connect(self):
         self.get_password()
-        token = self.get_password()
         try:
             self.nxc = NextCloud(
                 endpoint=NEXTCLOUD_URL,
                 user=NEXTCLOUD_ID,
-                password=token,
+                password="ddd",
                 json_output=True
             )
         except Exception as error:
