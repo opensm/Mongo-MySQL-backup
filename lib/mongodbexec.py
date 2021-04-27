@@ -30,9 +30,9 @@ class MongodbExec:
             raise Exception("mongo或者mongodump, mongorestore没找到可执行程序！")
 
         try:
-            self.conn = pymongo.MongoClient(**config)
+            self.conn = pymongo.MongoClient(host=self.host, port=self.port, username=self.user, password=self.password)
         except Exception as error:
-            RecodeLog.error(msg="链接MySQL,host:{},port:{}失败，原因:{}".format(config['host'], config['port'], error))
+            RecodeLog.error(msg="链接Mongo,host:{},port:{}失败，原因:{}".format(config['host'], config['port'], error))
             sys.exit(1)
 
         if int(platform.python_version().strip(".")[0]) < 3:
