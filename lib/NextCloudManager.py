@@ -4,16 +4,17 @@ from lib.Log import RecodeLog
 from lib.settings import *
 import sys
 import requests
+import re
 
 
 class NextCloudManager:
     def __init__(self):
-        NEXTCLOUD_TOKEN = self.get_password()
+        token = self.get_password()
         try:
             self.nxc = NextCloud(
                 endpoint=NEXTCLOUD_URL,
                 user=NEXTCLOUD_ID,
-                password=NEXTCLOUD_TOKEN,
+                password=token,
                 json_output=True
             )
         except Exception as error:
@@ -50,7 +51,7 @@ class NextCloudManager:
                 auth=(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD),
                 headers=headers
             )
-            print(res.status_code)
+            print(res.json())
             print(res.content)
             res.close()
         except Exception as error:
