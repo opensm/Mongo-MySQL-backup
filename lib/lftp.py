@@ -59,7 +59,7 @@ class FTPBackupForDB:
             if achieve not in achieve_list:
                 raise Exception("远端不存在该文件")
             fp = open(local_file, 'wb')
-            self.ftp.retrbinary('RETR ' + os.path.join(remote_path, achieve), fp.write, bufsize)
+            self.ftp.retrbinary('RETR ' + achieve, fp.write, bufsize)
             self.ftp.set_debuglevel(0)  # 参数为0，关闭调试模式
             fp.close()
             return True
