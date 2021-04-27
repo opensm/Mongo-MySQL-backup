@@ -21,7 +21,7 @@ class NextCloudManager:
                 json_output=True
             )
             RecodeLog.info(msg="初始化nextcloud Success，地址:{},用户:{},TOKEN:{}".format(
-                NEXTCLOUD_URL, NEXTCLOUD_USERNAME, token
+                NEXTCLOUD_URL, NEXTCLOUD_ID, token
             ))
         except Exception as error:
             RecodeLog.error(msg="初始化nextcloud失败，地址:{},用户:{},原因:{}".format(
