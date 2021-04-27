@@ -37,7 +37,7 @@ def main():
         if sql_data[1] == 'mysql':
             ff = MySQLExec()
             ff.run(sql=command_data['achieve'], env=command_data['env'])
-        elif sql_data[1] == 'mongo':
+        elif sql_data[1] == 'mongodb':
             ff = MongodbExec()
             ff.run(sql=command_data['achieve'], env=command_data['env'])
         else:
