@@ -56,6 +56,7 @@ class MySQLExec:
             if status != 0:
                 raise Exception(output)
             RecodeLog.info("执行:{0},成功!".format(cmd_str))
+            return True
         except Exception as error:
             RecodeLog.error(msg="执行:{0},失败，原因:{1}".format(cmd_str, error))
             sys.exit(1)
