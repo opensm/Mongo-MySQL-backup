@@ -51,6 +51,8 @@ class MongodbExec:
         """
         try:
             status, output = self.exec_proc.getstatusoutput(cmd_str)
+            print(status)
+            print(output)
             if status != 0:
                 raise Exception(output)
             RecodeLog.info("执行:{0},成功!".format(cmd_str))
