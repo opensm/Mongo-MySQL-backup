@@ -12,12 +12,12 @@ class NextCloudManager:
         self.nxc = None
 
     def connect(self):
-        self.get_password()
+        token = self.get_password()
         try:
             self.nxc = NextCloud(
                 endpoint=NEXTCLOUD_URL,
                 user=NEXTCLOUD_ID,
-                password="ddd",
+                password=token,
                 json_output=True
             )
         except Exception as error:
@@ -55,12 +55,12 @@ class NextCloudManager:
                 auth=(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD),
                 headers=headers
             )
-            print(res.json())
-            # print(res.json())
-            # print(res.content)
-            # res.close()
+            if res.status_code != 200:
+                raise Exception(res.content)
+            return re.findall(".*<apppassword>(.*)</apppassword>.*", res.content)[0]
         except Exception as error:
             RecodeLog.error("get passord faild :{}".format(error))
+            assert False
 
 
 __all__ = [
