@@ -39,6 +39,9 @@ class NextCloudManager:
             ))
             sys.exit(1)
 
+    def get_user(self):
+        print(self.nxc.getapppassword())
+
 
 __all__ = [
     'NextCloudManager'
