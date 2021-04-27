@@ -38,11 +38,11 @@ class NextCloudManager:
         self.connect()
         try:
             data = self.nxc.upload_file(NEXTCLOUD_USERNAME, local_achieve, remote_achieve)
+            if not data.is_ok:
+                raise Exception(data.data)
             RecodeLog.info(msg="上传到nextcloud成功！本地文件:{},远程文件:{},地址:{},用户:{}！".format(
                 local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_ID
             ))
-            if not data.is_ok:
-                raise Exception(data.data)
         except Exception as error:
             RecodeLog.error(msg="上传到nextcloud失败，本地文件:{},远程文件:{},地址:{},用户:{},原因:{}".format(
                 local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_ID, error
