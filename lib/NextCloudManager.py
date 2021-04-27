@@ -27,12 +27,12 @@ class NextCloudManager:
         :return:
         """
         try:
-            data=self.nxc.upload_file(NEXTCLOUD_USERNAME, local_achieve, remote_achieve)
+            data = self.nxc.upload_file(NEXTCLOUD_USERNAME, local_achieve, remote_achieve)
             RecodeLog.info(msg="上传到nextcloud成功！本地文件:{},远程文件:{},地址:{},用户:{}！".format(
                 local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_USERNAME
             ))
-            print(dir(data))
-            print(data.data)
+            if not data.is_ok:
+                raise Exception(data.data)
             assert data.status_code == 100
         except Exception as error:
             RecodeLog.error(msg="上传到nextcloud失败，本地文件:{},远程文件:{},地址:{},用户:{},原因:{}".format(
