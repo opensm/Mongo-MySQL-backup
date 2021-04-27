@@ -86,6 +86,7 @@ class FTPBackupForDB:
         :return:
         """
         # achieve_list = self.ls_dir(path=remote)
+        print(self.ftp.pwd())
         remote_achieve = os.path.join(remote, achieve)
         try:
             # if achieve not in achieve_list:
