@@ -9,6 +9,7 @@ from lib.lftp import FTPBackupForDB
 from lib.NextCloudManager import NextCloudManager
 import copy
 import platform
+import time
 
 
 class MongodbExec:
@@ -155,6 +156,7 @@ class MongodbExec:
             local_achieve=os.path.join(BACKUP_DIR, sql),
             remote_achieve=os.path.join("/BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", sql)
         )
+        time.sleep(10)
         n.upload(
             local_achieve=os.path.join(BACKUP_DIR, "{}.gz".format(filename)),
             remote_achieve=os.path.join("/BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", "{}.gz".format(filename))
