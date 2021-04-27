@@ -35,10 +35,10 @@ def main():
         command_data['env'] = command_dict.get('-e')
         sql_data = command_data['achieve'].split("#")
         if sql_data[1] == 'mysql':
-            ff = MySQLExec()
+            ff = MySQLExec(env=command_data['env'])
             ff.run(sql=command_data['achieve'], env=command_data['env'])
         elif sql_data[1] == 'mongodb':
-            ff = MongodbExec()
+            ff = MongodbExec(env=command_data['env'])
             ff.run(sql=command_data['achieve'], env=command_data['env'])
         else:
             print("error input db file")
