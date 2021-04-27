@@ -136,7 +136,7 @@ class MongodbExec:
         f.connect()
         f.download(remote_path=env, local_path=BACKUP_DIR, achieve=sql)
         sql_data = filename.split("#")
-        if sql_data[1] != 'mongo' or sql_data[2] != env:
+        if sql_data[1] != 'mongodb' or sql_data[2] != env:
             RecodeLog.error(msg="请检查即将导入的文件的相关信息，{}".format(sql))
             sys.exit(1)
         if len(sql_data) != 4:
