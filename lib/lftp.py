@@ -51,7 +51,7 @@ class FTPBackupForDB:
         :return:
         """
         bufsize = 1024
-        local_file = os.path.exists(os.path.join(local_path, achieve))
+        local_file = os.path.join(local_path, achieve)
         achieve_list = self.ls_dir(path=remote_path)
         try:
             if not os.path.exists(local_path):
