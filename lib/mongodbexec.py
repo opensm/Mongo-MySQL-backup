@@ -157,3 +157,8 @@ class MongodbExec:
             remote_achieve=os.path.join("/BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", "{}.gz".format(filename))
         )
         f.rm_remote(remote=env, achieve=sql)
+
+
+__all__ = [
+    'MongodbExec'
+]

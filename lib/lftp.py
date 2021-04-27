@@ -103,3 +103,8 @@ class FTPBackupForDB:
             self.ftp.close()
         except:
             sys.exit(0)
+
+
+__all__ = [
+    'FTPBackupForDB'
+]

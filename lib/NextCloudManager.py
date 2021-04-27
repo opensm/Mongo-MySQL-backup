@@ -36,3 +36,8 @@ class NextCloudManager:
                 NEXTCLOUD_URL, NEXTCLOUD_USERNAME, error
             ))
             sys.exit(1)
+
+
+__all__ = [
+    'NextCloudManager'
+]
