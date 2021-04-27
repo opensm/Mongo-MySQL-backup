@@ -9,6 +9,10 @@ import re
 
 class NextCloudManager:
     def __init__(self):
+        self.nxc = None
+
+    def connect(self):
+        self.get_password()
         token = self.get_password()
         try:
             self.nxc = NextCloud(
@@ -29,6 +33,7 @@ class NextCloudManager:
         :param remote_achieve:
         :return:
         """
+        self.connect()
         try:
             data = self.nxc.upload_file(NEXTCLOUD_USERNAME, local_achieve, remote_achieve)
             RecodeLog.info(msg="上传到nextcloud成功！本地文件:{},远程文件:{},地址:{},用户:{}！".format(
@@ -52,8 +57,9 @@ class NextCloudManager:
                 headers=headers
             )
             print(res.json())
-            print(res.content)
-            res.close()
+            # print(res.json())
+            # print(res.content)
+            # res.close()
         except Exception as error:
             RecodeLog.error("get passord faild :{}".format(error))
 
