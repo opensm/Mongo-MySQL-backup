@@ -100,7 +100,7 @@ class FTPBackupForDB:
     def __del__(self):
         try:
             self.ftp.dir()
-            self.ftp.close()
+            self.ftp.quit()
         except:
             sys.exit(0)
 
