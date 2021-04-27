@@ -3,10 +3,12 @@ from nextcloud import NextCloud
 from lib.Log import RecodeLog
 from lib.settings import NEXTCLOUD_URL, NEXTCLOUD_PASSWORD, NEXTCLOUD_USERNAME
 import sys
+import requests
 
 
 class NextCloudManager:
     def __init__(self):
+        self.get_password()
         try:
             self.nxc = NextCloud(
                 endpoint=NEXTCLOUD_URL,
@@ -39,8 +41,20 @@ class NextCloudManager:
             ))
             sys.exit(1)
 
-    def get_user(self):
-        print(self.nxc.getapppassword())
+    def get_password(self):
+        headers = dict()
+        headers['OCS-APIRequest'] = 'true'
+        try:
+            res = requests.get(
+                url="{0}/ocs/v2.php/core/getapppassword".format(NEXTCLOUD_URL),
+                auth=(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD),
+                headers=headers
+            )
+            print(res.status_code)
+            print(res.content)
+            res.close()
+        except Exception as error:
+            RecodeLog.error("get passord faild :{}".format(error))
 
 
 __all__ = [
