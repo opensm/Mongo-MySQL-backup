@@ -31,7 +31,8 @@ class NextCloudManager:
             RecodeLog.info(msg="上传到nextcloud成功！本地文件:{},远程文件:{},地址:{},用户:{}！".format(
                 local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_USERNAME
             ))
-            print(data)
+            print(data.msg)
+            assert data.status_code == 100
         except Exception as error:
             RecodeLog.error(msg="上传到nextcloud失败，本地文件:{},远程文件:{},地址:{},用户:{},原因:{}".format(
                 local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_USERNAME, error
