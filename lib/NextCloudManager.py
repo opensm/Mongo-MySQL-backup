@@ -32,7 +32,7 @@ class NextCloudManager:
                 local_achieve, remote_achieve, NEXTCLOUD_URL, NEXTCLOUD_USERNAME
             ))
             print(dir(data))
-            print(data.message)
+            print(data.data)
             assert data.status_code == 100
         except Exception as error:
             RecodeLog.error(msg="上传到nextcloud失败，本地文件:{},远程文件:{},地址:{},用户:{},原因:{}".format(
