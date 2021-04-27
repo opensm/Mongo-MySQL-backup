@@ -91,7 +91,7 @@ class FTPBackupForDB:
         try:
             # if achieve not in achieve_list:
             #     raise Exception("远端不存在该文件")
-            self.ftp.rmd(achieve)
+            self.ftp.delete(filename=achieve)
             RecodeLog.info(msg="删除远端文件成功，{}!".format(remote_achieve))
             return True
         except Exception as error:
