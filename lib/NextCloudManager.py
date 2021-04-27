@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 from nextcloud import NextCloud
 from lib.Log import RecodeLog
-from lib.settings import NEXTCLOUD_URL, NEXTCLOUD_PASSWORD, NEXTCLOUD_USERNAME
+from lib.settings import *
 import sys
 import requests
 
 
 class NextCloudManager:
     def __init__(self):
-        self.get_password()
+        NEXTCLOUD_TOKEN = self.get_password()
         try:
             self.nxc = NextCloud(
                 endpoint=NEXTCLOUD_URL,
-                user=NEXTCLOUD_USERNAME,
-                password=NEXTCLOUD_PASSWORD,
+                user=NEXTCLOUD_ID,
+                password=NEXTCLOUD_TOKEN,
                 json_output=True
             )
         except Exception as error:
