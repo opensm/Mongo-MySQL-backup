@@ -133,6 +133,7 @@ class MongodbExec:
         f = FTPBackupForDB(db='mongo')
         n = NextCloudManager()
         filename, filetype = os.path.splitext(sql)
+        f.connect()
         f.download(remote_path=env, local_path=BACKUP_DIR, achieve=sql)
         sql_data = filename.split("#")
         if sql_data[1] != 'mongo' or sql_data[2] != env:
