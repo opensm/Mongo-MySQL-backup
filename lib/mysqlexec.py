@@ -150,7 +150,7 @@ class MySQLExec:
             achieve=filename
         )
         self.exec_sql(sql=sql, db=sql_data[3])
-        backup = os.path.join(BACKUP_DIR, '{}.gz'.format(filetype))
+        backup = os.path.join(BACKUP_DIR, '{}.gz'.format(filename))
         exec_one = os.path.join(BACKUP_DIR, sql)
         if not c.upload(achieve=exec_one):
             RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
