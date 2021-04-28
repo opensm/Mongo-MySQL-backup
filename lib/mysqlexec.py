@@ -127,19 +127,18 @@ class MySQLExec:
         else:
             RecodeLog.info(msg="导入数据成功:{}".format(cmd_str))
 
-    def run(self, sql, env):
+    def run(self, sql):
         """
         :param sql:
-        :param env:
         :return:
         """
         f = FTPBackupForDB(db='mysql')
         c = CosUpload()
         filename, filetype = os.path.splitext(sql)
         f.connect()
-        f.download(remote_path=env, local_path=BACKUP_DIR, achieve=sql)
         sql_data = filename.split("#")
-        if sql_data[1] != 'mysql' or sql_data[2] != env:
+        f.download(remote_path=sql_data[2], local_path=BACKUP_DIR, achieve=sql)
+        if sql_data[1] != 'mysql':
             RecodeLog.error(msg="请检查即将导入的文件的相关信息，{}".format(sql))
             sys.exit(1)
         if len(sql_data) != 4:
@@ -155,11 +154,11 @@ class MySQLExec:
         if not c.upload(achieve=exec_one):
             RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
         else:
-            RecodeLog.error(msg="上传文件成功：{},归档地址：{}/{}".format(exec_one, ONLINE_URL, sql))
+            RecodeLog.info(msg="上传文件成功：{},归档地址：{}/{}".format(exec_one, ONLINE_URL, sql))
         if not c.upload(achieve=backup):
             RecodeLog.error(msg="上传文件失败：{}".format(backup))
         else:
-            RecodeLog.error(msg="上传文件成功：{},归档地址：{}/{}.gz".format(backup, ONLINE_URL, filename))
+            RecodeLog.info(msg="上传文件成功：{},归档地址：{}/{}.gz".format(backup, ONLINE_URL, filename))
 
 
 __all__ = [

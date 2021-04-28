@@ -126,19 +126,19 @@ class MongodbExec:
         else:
             RecodeLog.info(msg="导入数据成功:{}".format(cmd_str))
 
-    def run(self, sql, env):
+    def run(self, sql):
         """
         :param sql:
-        :param env:
         :return:
         """
         f = FTPBackupForDB(db='mongo')
         c = CosUpload()
         filename, filetype = os.path.splitext(sql)
         f.connect()
-        f.download(remote_path=env, local_path=BACKUP_DIR, achieve=sql)
         sql_data = filename.split("#")
-        if sql_data[1] != 'mongodb' or sql_data[2] != env:
+        f.download(remote_path=sql_data[2], local_path=BACKUP_DIR, achieve=sql)
+        sql_data = filename.split("#")
+        if sql_data[1] != 'mongodb':
             RecodeLog.error(msg="请检查即将导入的文件的相关信息，{}".format(sql))
             sys.exit(1)
         if len(sql_data) != 4:
