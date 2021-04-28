@@ -55,10 +55,10 @@ class MySQLExec:
             status, output = self.exec_proc.getstatusoutput(cmd_str)
             if status != 0:
                 raise Exception(output)
-            RecodeLog.info("执行:{0},成功!".format(cmd_str))
+            RecodeLog.info("执行:{0},成功!".format(cmd_str).replace(self.password, '********'))
             return True
         except Exception as error:
-            RecodeLog.error(msg="执行:{0},失败，原因:{1}".format(cmd_str, error))
+            RecodeLog.error(msg="执行:{0},失败，原因:{1}".format(cmd_str, error).replace(self.password, '********'))
             sys.exit(1)
 
     def check_db(self, db):
@@ -122,10 +122,10 @@ class MySQLExec:
             )
 
         if not self.cmd(cmd_str=cmd_str):
-            RecodeLog.error(msg="导入数据失败:{}".format(cmd_str))
+            RecodeLog.error(msg="导入数据失败:{}".format(cmd_str).replace(self.password, '********'))
             sys.exit(1)
         else:
-            RecodeLog.info(msg="导入数据成功:{}".format(cmd_str))
+            RecodeLog.info(msg="导入数据成功:{}".format(cmd_str).replace(self.password, '********'))
 
     def run(self, sql):
         """
