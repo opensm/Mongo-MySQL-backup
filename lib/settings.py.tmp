@@ -34,18 +34,19 @@ MONGODB_CONFIG = {
 
     }
 }
-NEXTCLOUD_URL = ""
-NEXTCLOUD_USERNAME = ""
-NEXTCLOUD_ID = ""
-NEXTCLOUD_PASSWORD = ""
+COS_INIT_PARAMS = {
+    "Region": "",
+    "SecretId": "",
+    "SecretKey": "",
+    "Scheme": ""
+}
+BUCKET = ''
 __all__ = [
     'BACKUP_DIR',
     'MONGODB_CONFIG',
     'MYSQL_CONFIG',
     'FTP_CONFIG',
     'LOG_FILE',
-    'NEXTCLOUD_USERNAME',
-    'NEXTCLOUD_PASSWORD',
-    'NEXTCLOUD_URL',
-    'NEXTCLOUD_ID'
+    'COS_INIT_PARAMS',
+    'BUCKET'
 ]

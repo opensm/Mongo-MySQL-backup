@@ -6,7 +6,7 @@ from lib.settings import *
 from lib.Log import RecodeLog
 import sys
 from lib.lftp import FTPBackupForDB
-from lib.NextCloudManager import NextCloudManager
+from lib.CosUpdate import CosUpload
 import copy
 import platform
 import time
@@ -133,7 +133,7 @@ class MongodbExec:
         :return:
         """
         f = FTPBackupForDB(db='mongo')
-        # n = NextCloudManager()
+        c = CosUpload()
         filename, filetype = os.path.splitext(sql)
         f.connect()
         f.download(remote_path=env, local_path=BACKUP_DIR, achieve=sql)
@@ -149,18 +149,16 @@ class MongodbExec:
             achieve=filename
         )
         self.exec_sql(sql=sql, db=sql_data[3])
-        # print(os.path.join("/BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", "{}".format(sql)))
-        # print(os.path.join("/BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", "{}.gz".format(filename)))
-        # # n.upload(
-        #     local_achieve=os.path.join(BACKUP_DIR, sql),
-        #     remote_achieve=os.path.join("BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", sql)
-        # )
-        # time.sleep(10)
-        # n.upload(
-        #     local_achieve=os.path.join(BACKUP_DIR, "{}.gz".format(filename)),
-        #     remote_achieve=os.path.join("BU4-09项目文档-北汽越野2/06-运维/06-03-发版归档", "{}.gz".format(filename))
-        # )
-        # f.rm_remote(remote=env, achieve=sql)
+        backup_one = os.path.join(BACKUP_DIR, '{}.gz'.format(filetype))
+        exec_one = os.path.join(BACKUP_DIR, sql)
+        if not c.upload(achieve=exec_one):
+            RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
+        else:
+            RecodeLog.error(msg="上传文件成功：{}".format(exec_one))
+        if not c.upload(achieve=backup_one):
+            RecodeLog.error(msg="上传文件失败：{}".format(backup_one))
+        else:
+            RecodeLog.error(msg="上传文件成功：{}".format(backup_one))
 
 
 __all__ = [
