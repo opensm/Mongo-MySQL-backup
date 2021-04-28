@@ -145,7 +145,10 @@ class MySQLExec:
         if len(sql_data) != 4:
             RecodeLog.error(msg="文件格式错误，请按照：20210426111742#mongodb#pre#member.sql")
             sys.exit(1)
-        self.backup_one(db=sql_data[3], achieve=filename)
+        self.backup_one(
+            db=sql_data[3],
+            achieve=filename
+        )
         self.exec_sql(sql=sql, db=sql_data[3])
         backup = os.path.join(BACKUP_DIR, '{}.gz'.format(filetype))
         exec_one = os.path.join(BACKUP_DIR, sql)
