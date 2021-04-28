@@ -6,18 +6,9 @@ from qcloud_cos import CosS3Client
 import sys
 from settings import *
 import os
-import commands
 from Log import RecodeLog
-import glob
-import time
 import hashlib
-import simplejson as json
-import json
 from tencentcloud.common import credential
-from tencentcloud.common.profile.client_profile import ClientProfile
-from tencentcloud.common.profile.http_profile import HttpProfile
-from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
-from tencentcloud.cdn.v20180606 import cdn_client, models
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
