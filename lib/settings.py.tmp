@@ -40,6 +40,7 @@ COS_INIT_PARAMS = {
     "SecretKey": "",
     "Scheme": ""
 }
+ONLINE_URL = ""
 BUCKET = ''
 __all__ = [
     'BACKUP_DIR',
@@ -48,5 +49,7 @@ __all__ = [
     'FTP_CONFIG',
     'LOG_FILE',
     'COS_INIT_PARAMS',
-    'BUCKET'
+    'LOG_DIR',
+    'BUCKET',
+    'ONLINE_URL'
 ]

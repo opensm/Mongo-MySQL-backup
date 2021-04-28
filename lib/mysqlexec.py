@@ -155,11 +155,11 @@ class MySQLExec:
         if not c.upload(achieve=exec_one):
             RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
         else:
-            RecodeLog.error(msg="上传文件成功：{}".format(exec_one))
+            RecodeLog.error(msg="上传文件成功：{},归档地址：{}/{}".format(exec_one, ONLINE_URL, sql))
         if not c.upload(achieve=backup):
             RecodeLog.error(msg="上传文件失败：{}".format(backup))
         else:
-            RecodeLog.error(msg="上传文件成功：{}".format(backup))
+            RecodeLog.error(msg="上传文件成功：{},归档地址：{}/{}.gz".format(backup, ONLINE_URL, filename))
 
 
 __all__ = [
