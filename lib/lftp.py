@@ -57,7 +57,7 @@ class FTPBackupForDB:
             if not os.path.exists(local_path):
                 raise Exception("本地目录不存在")
             if achieve not in achieve_list:
-                raise Exception("远端不存在该文件")
+                raise Exception("远端不存在该文件:{0}".format(achieve_list))
             fp = open(local_file, 'wb')
             self.ftp.retrbinary('RETR ' + achieve, fp.write, bufsize)
             self.ftp.set_debuglevel(0)  # 参数为0，关闭调试模式
