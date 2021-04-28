@@ -149,16 +149,16 @@ class MongodbExec:
             achieve=filename
         )
         self.exec_sql(sql=sql, db=sql_data[3])
-        backup_one = os.path.join(BACKUP_DIR, '{}.gz'.format(filetype))
+        backup = os.path.join(BACKUP_DIR, '{}.gz'.format(filetype))
         exec_one = os.path.join(BACKUP_DIR, sql)
         if not c.upload(achieve=exec_one):
             RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
         else:
             RecodeLog.error(msg="上传文件成功：{}".format(exec_one))
-        if not c.upload(achieve=backup_one):
-            RecodeLog.error(msg="上传文件失败：{}".format(backup_one))
+        if not c.upload(achieve=backup):
+            RecodeLog.error(msg="上传文件失败：{}".format(backup))
         else:
-            RecodeLog.error(msg="上传文件成功：{}".format(backup_one))
+            RecodeLog.error(msg="上传文件成功：{}".format(backup))
 
 
 __all__ = [
