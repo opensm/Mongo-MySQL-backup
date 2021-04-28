@@ -65,7 +65,7 @@ class FTPBackupForDB:
             return True
         except Exception as error:
             RecodeLog.error(msg="上传文件失败，{}，原因：{}".format(local_file, error))
-            return False
+            sys.exit(1)
 
     def run(self, remote, achieve):
         """
