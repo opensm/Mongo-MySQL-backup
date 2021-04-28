@@ -63,6 +63,7 @@ class MySQLExec:
 
     def check_db(self, db):
         res = self.cursor.execute("show databases like '{0}';".format(db))
+        print(res)
         if len(res):
             return True
         else:
