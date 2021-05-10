@@ -83,7 +83,7 @@ class MongodbExec:
 
     def backup_one(self, db, achieve):
         if not self.check_db(db=db):
-            sys.exit(1)
+            return
         cmd_str = "/usr/bin/mongodump {0}  --gzip --archive={2}".format(
             self.auth_dump_str,
             db,
