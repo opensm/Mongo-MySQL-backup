@@ -65,7 +65,7 @@ class MongodbExec:
         if db in res:
             return True
         else:
-            RecodeLog.error(msg="数据库：{0},不存在！")
+            RecodeLog.error(msg="数据库：{0},不存在！".format(db))
             return False
 
     def backup_all(self):
