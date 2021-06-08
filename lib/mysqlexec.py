@@ -64,10 +64,10 @@ class MySQLExec:
     def check_db(self, db):
         self.cursor.execute("show databases like '{0}';".format(db))
         res = self.cursor.fetchall()
-        if len(res):
+        if len(res) > 0:
             return True
         else:
-            RecodeLog.error(msg="数据库：{0},不存在！")
+            RecodeLog.error(msg="数据库：{0},不存在:{1}！".format(db, res))
             return False
 
     def backup_all(self):
