@@ -46,7 +46,8 @@ class CosUpload:
                     Body=fp,
                     Key=os.path.join(os.path.basename(achieve)),
                     StorageClass='STANDARD',
-                    EnableMD5=True
+                    EnableMD5=True,
+                    ContentMD5=out_md5(fp)
                 )
                 RecodeLog.info(msg=response)
                 return True
