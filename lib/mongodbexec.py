@@ -60,6 +60,16 @@ class MongodbExec:
             RecodeLog.error(msg="执行:{0},失败，原因:{1}".format(cmd_str, error).replace(self.password, '********'))
             sys.exit(1)
 
+    def list_mongodb(self):
+        databaseList = list()
+        try:
+            for data in self.conn.list_database_names():
+                databaseList.append(data)
+                print(data)
+        except Exception as error:
+            print("链接Mongo,host:{},port:{}失败，原因:{}".format(self.host, self.port, error))
+            sys.exit(1)
+
     def check_db(self, db):
         res = self.conn.list_database_names()
         if db in res:

@@ -83,6 +83,18 @@ class MySQLExec:
         )
         self.cmd(cmd_str=cmd_str)
 
+    def list_mysql(self):
+        databaseList = list()
+        try:
+            self.cursor.execute("show databases;")
+            for data in self.cursor.fetchall():
+                databaseList.append(data[0])
+                print(data[0])
+            sys.exit(0)
+        except Exception as error:
+            print("链接MySQL,host:{},port:{}失败，原因:{}".format(self.host, self.port, error))
+            sys.exit(1)
+
     def backup_one(self, db, achieve):
         if not self.check_db(db=db):
             sys.exit(1)
