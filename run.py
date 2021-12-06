@@ -6,7 +6,8 @@ from lib.mysqlexec import MySQLExec
 
 
 def useage():
-    print("%s -f\t#执行文件" % sys.argv[0])
+    print("%s -f\t【文件名】\t#执行文件" % sys.argv[0])
+    print("%s -l\t【数据库类型】 -e\t【所属环境】\t#查看数据库列表" % sys.argv[0])
     print("%s -h\t#帮助文档" % sys.argv[0])
 
 
