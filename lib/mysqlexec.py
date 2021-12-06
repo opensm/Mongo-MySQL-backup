@@ -6,7 +6,7 @@ from lib.settings import *
 from lib.Log import RecodeLog
 import sys
 from lib.lftp import FTPBackupForDB
-from lib.CosUpdate import CosUpload
+# from lib.CosUpdate import CosUpload
 import copy
 import platform
 
@@ -144,7 +144,7 @@ class MySQLExec:
         :return:
         """
         f = FTPBackupForDB(db='mysql')
-        c = CosUpload()
+        # c = CosUpload()
         filename, filetype = os.path.splitext(sql)
         f.connect()
         sql_data = filename.split("#")

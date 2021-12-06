@@ -6,7 +6,7 @@ from lib.settings import *
 from lib.Log import RecodeLog
 import sys
 from lib.lftp import FTPBackupForDB
-from lib.CosUpdate import CosUpload
+#from lib.CosUpdate import CosUpload
 import copy
 import platform
 import time
