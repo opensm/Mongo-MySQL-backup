@@ -142,7 +142,7 @@ class MongodbExec:
         :return:
         """
         f = FTPBackupForDB(db='mongo')
-        c = CosUpload()
+        # c = CosUpload()
         filename, filetype = os.path.splitext(sql)
         f.connect()
         sql_data = filename.split("#")
@@ -159,16 +159,16 @@ class MongodbExec:
             achieve=filename
         )
         self.exec_sql(sql=sql, db=sql_data[3])
-        backup = os.path.join(BACKUP_DIR, '{}.gz'.format(filename))
-        exec_one = os.path.join(BACKUP_DIR, sql)
-        if not c.upload(achieve=exec_one):
-            RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
-        else:
-            RecodeLog.info(msg="上传文件成功：{},归档地址：{}/{}".format(exec_one, ONLINE_URL, sql))
-        if not c.upload(achieve=backup):
-            RecodeLog.error(msg="上传文件失败：{}".format(backup))
-        else:
-            RecodeLog.info(msg="上传文件成功：{},归档地址：{}/{}.gz".format(backup, ONLINE_URL, filename))
+        # backup = os.path.join(BACKUP_DIR, '{}.gz'.format(filename))
+        # exec_one = os.path.join(BACKUP_DIR, sql)
+        # if not c.upload(achieve=exec_one):
+        #     RecodeLog.error(msg="上传文件失败：{}".format(exec_one))
+        # else:
+        #     RecodeLog.info(msg="上传文件成功：{},归档地址：{}/{}".format(exec_one, ONLINE_URL, sql))
+        # if not c.upload(achieve=backup):
+        #     RecodeLog.error(msg="上传文件失败：{}".format(backup))
+        # else:
+        #     RecodeLog.info(msg="上传文件成功：{},归档地址：{}/{}.gz".format(backup, ONLINE_URL, filename))
 
 
 __all__ = [
