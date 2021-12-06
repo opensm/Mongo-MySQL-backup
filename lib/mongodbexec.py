@@ -141,12 +141,12 @@ class MongodbExec:
         :param sql:
         :return:
         """
-        f = FTPBackupForDB(db='mongo')
+        # f = FTPBackupForDB(db='mongo')
         # c = CosUpload()
         filename, filetype = os.path.splitext(sql)
-        f.connect()
+        # f.connect()
         sql_data = filename.split("#")
-        f.download(remote_path=sql_data[2], local_path=BACKUP_DIR, achieve=sql)
+        # f.download(remote_path=sql_data[2], local_path=BACKUP_DIR, achieve=sql)
         sql_data = filename.split("#")
         if sql_data[1] != 'mongodb':
             RecodeLog.error(msg="请检查即将导入的文件的相关信息，{}".format(sql))

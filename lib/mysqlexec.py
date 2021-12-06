@@ -143,12 +143,12 @@ class MySQLExec:
         :param sql:
         :return:
         """
-        f = FTPBackupForDB(db='mysql')
+        # f = FTPBackupForDB(db='mysql')
         # c = CosUpload()
         filename, filetype = os.path.splitext(sql)
-        f.connect()
+        # f.connect()
         sql_data = filename.split("#")
-        f.download(remote_path=sql_data[2], local_path=BACKUP_DIR, achieve=sql)
+        # f.download(remote_path=sql_data[2], local_path=BACKUP_DIR, achieve=sql)
         if sql_data[1] != 'mysql':
             RecodeLog.error(msg="请检查即将导入的文件的相关信息，{}".format(sql))
             sys.exit(1)
