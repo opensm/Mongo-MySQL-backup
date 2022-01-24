@@ -6,7 +6,7 @@ from lib.settings import *
 from lib.Log import RecodeLog
 import sys
 from lib.lftp import FTPBackupForDB
-#from lib.CosUpdate import CosUpload
+# from lib.CosUpdate import CosUpload
 import copy
 import platform
 import time
@@ -79,7 +79,7 @@ class MongodbExec:
             return False
 
     def backup_all(self):
-        cmd_str = "/usr/bin/mongodump {0} --gzip --archive={1}".format(
+        cmd_str = "/usr/bin/mongodump {0} --forceTableScan --gzip --archive={1}".format(
             self.auth_dump_str,
             os.path.join(
                 BACKUP_DIR,
